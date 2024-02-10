@@ -16,7 +16,8 @@ const products = [
         price: 22.99, 
         weight:50,
         description:'A low sugar and starch (NSC), pelleted feed with a small inclusion of whole oats.',
-        link: 'https://tributeequinenutrition.com/products/kalm-n-ez-textured'
+        link: 'https://tributeequinenutrition.com/products/kalm-n-ez-textured',
+        dateAdded: "2/10/2024"
     },
     { 
         id: 2, 
@@ -29,7 +30,8 @@ const products = [
         price: 22.99, 
         weight:50,
         description: 'A low sugar and starch (NSC), pelleted horse feed for all classes of adult horses.',
-        link: 'https://tributeequinenutrition.com/products/kalm-n-ez-pellet'
+        link: 'https://tributeequinenutrition.com/products/kalm-n-ez-pellet',
+        dateAdded: "2/10/2024"
     },
     { 
         id: 3, 
@@ -42,7 +44,8 @@ const products = [
         price: 24.99, 
         weight:50,
         description: 'A low NSC ration balancer for idle, breeding, growing and performance horses.',
-        link: 'https://tributeequinenutrition.com/products/essential-k'
+        link: 'https://tributeequinenutrition.com/products/essential-k',
+        dateAdded: "2/10/2024"
     },
     // Add more products
 ];
@@ -71,6 +74,18 @@ app.get('/api/products/upc/:upc', (req, res) => {
         res.status(404).json({ error: 'Product not found' });
     } else {
         res.json(product);
+    }
+});
+
+
+// Get all products added after a specific date.
+app.get('/api/products/bydate/:date', (req, res) => {
+    const date = parseInt(req.params.date);
+    const products = products.find(p => p.dateAdded >= date);
+    if (!products) {
+        res.status(404).json({ error: 'Product not found' });
+    } else {
+        res.json(products);
     }
 });
 
