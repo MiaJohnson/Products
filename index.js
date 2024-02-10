@@ -17,7 +17,7 @@ const products = [
         weight:50,
         description:'A low sugar and starch (NSC), pelleted feed with a small inclusion of whole oats.',
         link: 'https://tributeequinenutrition.com/products/kalm-n-ez-textured',
-        dateAdded: "2/10/2024"
+        dateAdded: '2024-02-10T11:48:43.511Z'
     },
     { 
         id: 2, 
@@ -31,7 +31,7 @@ const products = [
         weight:50,
         description: 'A low sugar and starch (NSC), pelleted horse feed for all classes of adult horses.',
         link: 'https://tributeequinenutrition.com/products/kalm-n-ez-pellet',
-        dateAdded: "2/10/2024"
+        dateAdded: '2024-02-10T11:48:43.511Z'
     },
     { 
         id: 3, 
@@ -45,7 +45,7 @@ const products = [
         weight:50,
         description: 'A low NSC ration balancer for idle, breeding, growing and performance horses.',
         link: 'https://tributeequinenutrition.com/products/essential-k',
-        dateAdded: "2/10/2024"
+        dateAdded: '2024-02-10T11:48:43.511Z'
     },
     // Add more products
 ];
