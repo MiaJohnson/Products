@@ -4,8 +4,46 @@ const port = process.env.PORT || 3000;
 
 // Sample product data (in-memory array)
 const products = [
-    { id: 1, barcode: 1234, name: 'Widget A', price: 19.99 },
-    { id: 2, barcode: 5678, name: 'Gizmo B', price: 29.99 },
+    { 
+        id: 1,
+        barcode: 846336000242, 
+        upc: '846336000242', 
+        sku: 'T920EZ', 
+        proucttype: 'Grain', 
+        feedtype:'textured', 
+        manufacturer: 'Tribute', 
+        productname: 'Kalm N Ez', 
+        price: 22.99, 
+        weight:50,
+        description:'A low sugar and starch (NSC), pelleted feed with a small inclusion of whole oats.',
+        link: 'https://tributeequinenutrition.com/products/kalm-n-ez-textured'
+    },
+    { 
+        id: 2, 
+        upc: '846336000211', 
+        sku: '920P', 
+        proucttype: 'Grain', 
+        feedtype:'pelleted', 
+        manufacturer: 'Tribute', 
+        productname: 'Kalm N Ez', 
+        price: 22.99, 
+        weight:50,
+        description: 'A low sugar and starch (NSC), pelleted horse feed for all classes of adult horses.',
+        link: 'https://tributeequinenutrition.com/products/kalm-n-ez-pellet'
+    },
+    { 
+        id: 3, 
+        upc: '846336004813', 
+        sku: '928EK30', 
+        proucttype: 'Grain', 
+        feedtype:'pelleted', 
+        manufacturer: 'Tribute', 
+        productname: 'Essential K', 
+        price: 24.99, 
+        weight:50,
+        description: 'A low NSC ration balancer for idle, breeding, growing and performance horses.',
+        link: 'https://tributeequinenutrition.com/products/essential-k'
+    },
     // Add more products
 ];
 
