@@ -9,7 +9,7 @@ const products = [
         barcode: 846336000242, 
         upc: '846336000242', 
         sku: 'T920EZ', 
-        proucttype: 'Grain', 
+        producttype: 'Grain', 
         feedtype:'textured', 
         manufacturer: 'Tribute', 
         productname: 'Kalm N Ez', 
@@ -22,7 +22,7 @@ const products = [
         id: 2, 
         upc: '846336000211', 
         sku: '920P', 
-        proucttype: 'Grain', 
+        producttype: 'Grain', 
         feedtype:'pelleted', 
         manufacturer: 'Tribute', 
         productname: 'Kalm N Ez', 
@@ -35,7 +35,7 @@ const products = [
         id: 3, 
         upc: '846336004813', 
         sku: '928EK30', 
-        proucttype: 'Grain', 
+        producttype: 'Grain', 
         feedtype:'pelleted', 
         manufacturer: 'Tribute', 
         productname: 'Essential K', 
@@ -64,13 +64,24 @@ app.get('/api/products/:id', (req, res) => {
 });
 
 // Get a specific product by barcode
-app.get('/api/products/barcode/:barcode', (req, res) => {
-    const barcodeId = parseInt(req.params.barcode);
-    const product = products.find(p => p.barcode === barcodeId);
+app.get('/api/products/upc/:upc', (req, res) => {
+    const upcId = parseInt(req.params.upc);
+    const product = products.find(p => p.upc === upcId);
     if (!product) {
         res.status(404).json({ error: 'Product not found' });
     } else {
         res.json(product);
+    }
+});
+
+// Get a specific product by manufacturer
+app.get('/api/products/producttype/:producttype', (req, res) => {
+    const productType = parseInt(req.params.producttype);
+    const prodTypes = products.find(p => p.producttype === productType);
+    if (!prodTypes) {
+        res.status(404).json({ error: 'Products not found' });
+    } else {
+        res.json(prodTypes);
     }
 });
 
