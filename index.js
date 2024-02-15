@@ -88,11 +88,11 @@ app.get('/api/products/bydate/:date', (req, res) => {
         console.log('Invalid date string');
     }
 
-    const products = products.find(p => p.dateAdded >= date);
-    if (!products) {
+    const filteredProducts = products.filter(p => p.dateAdded >= date);
+    if (filteredProducts.length === 0) {
         res.status(404).json({ error: 'Product not found' });
     } else {
-        res.json(products);
+        res.json(filteredProducts);
     }
 });
 
