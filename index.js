@@ -80,7 +80,7 @@ app.get('/api/products/upc/:upc', (req, res) => {
 
 // Get all products added after a specific date.
 app.get('/api/products/bydate/:date', (req, res) => {
-    const date = parseInt(req.params.date);
+    const date = DateTime.Parse(req.params.date);
     const products = products.find(p => p.dateAdded >= date);
     if (!products) {
         res.status(404).json({ error: 'Product not found' });
