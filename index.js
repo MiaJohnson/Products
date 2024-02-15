@@ -80,7 +80,14 @@ app.get('/api/products/upc/:upc', (req, res) => {
 
 // Get all products added after a specific date.
 app.get('/api/products/bydate/:date', (req, res) => {
-    const date = DateTime.Parse(req.params.date);
+    const date = Date.parse(req.params.date);
+    if (!isNaN(date)) {
+        // Successfully parsed, 'date' contains the milliseconds since Jan 1, 1970
+        console.log('date:', date);
+    } else {
+        console.log('Invalid date string');
+    }
+
     const products = products.find(p => p.dateAdded >= date);
     if (!products) {
         res.status(404).json({ error: 'Product not found' });
