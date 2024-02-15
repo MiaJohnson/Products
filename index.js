@@ -6,7 +6,6 @@ const port = process.env.PORT || 3000;
 const products = [
     { 
         id: 1,
-        barcode: 846336000242, 
         upc: '846336000242', 
         sku: 'T920EZ', 
         producttype: 'Grain', 
@@ -17,13 +16,13 @@ const products = [
         weight:50,
         description:'A low sugar and starch (NSC), pelleted feed with a small inclusion of whole oats.',
         link: 'https://tributeequinenutrition.com/products/kalm-n-ez-textured',
-        dateAdded: '2024-02-10T11:48:43.511Z'
+        dateAdded: '1776-07-04'
     },
     { 
         id: 2, 
         upc: '846336000211', 
         sku: '920P', 
-        producttype: 'Grain', 
+        producttype: 'Grain',
         feedtype:'pelleted', 
         manufacturer: 'Tribute', 
         productname: 'Kalm N Ez', 
@@ -31,13 +30,13 @@ const products = [
         weight:50,
         description: 'A low sugar and starch (NSC), pelleted horse feed for all classes of adult horses.',
         link: 'https://tributeequinenutrition.com/products/kalm-n-ez-pellet',
-        dateAdded: '2024-02-10T11:48:43.511Z'
+        dateAdded: '1776-07-04'
     },
     { 
         id: 3, 
         upc: '846336004813', 
         sku: '928EK30', 
-        producttype: 'Grain', 
+        producttype: 'Grain',
         feedtype:'pelleted', 
         manufacturer: 'Tribute', 
         productname: 'Essential K', 
@@ -45,10 +44,45 @@ const products = [
         weight:50,
         description: 'A low NSC ration balancer for idle, breeding, growing and performance horses.',
         link: 'https://tributeequinenutrition.com/products/essential-k',
-        dateAdded: '2024-02-10T11:48:43.511Z'
+        dateAdded: '1776-07-04'
     },
-    // Add more products
+   
+    {
+        id: 4,
+       upc: '736816326439 ',
+        sku: '',
+        producttype: 'Grain',
+        feedtype: 'Pelleted',
+        manufacturer: "Producer's Pride",
+        productname: '12% Sweet Horse Feed',
+        price: 14.49,
+        weight: 50,
+        description: 'A sweet horse feed suitable for various life stages.',
+        link: 'https://www.tractorsupply.com/tsc/product/producers-pride-12-sweet-feed-50-lb',
+        dateAdded: '1776-07-04'
+    }
+     // Add more products
 ];
+
+// Get a specific product by Product Type
+app.get('/api/products/producttype/:producttype', (req, res) => {
+    const requestedProductType = req.params.producttype;
+    const filteredProducts = products.filter(p => p.producttype === requestedProductType);
+    res.json(filteredProducts.length ? filteredProducts : { error: 'Product type not found' });
+});
+
+// Get products that were added on or after date passed in.
+app.get('/api/products/bydate/:date', (req, res) => {
+    const date = new Date(req.params.date);
+    if (isNaN(date)) {
+        return res.status(400).json({ error: 'Invalid date format' });
+    }
+
+    const filteredProducts = products.filter(p => new Date(p.dateAdded) >= date);
+    res.json(filteredProducts.length ? filteredProducts : { error: 'Products after date not found' });
+});
+
+
 
 // Get all products
 app.get('/api/products', (req, res) => {
@@ -59,53 +93,20 @@ app.get('/api/products', (req, res) => {
 app.get('/api/products/:id', (req, res) => {
     const productId = parseInt(req.params.id);
     const product = products.find(p => p.id === productId);
-    if (!product) {
-        res.status(404).json({ error: 'Product not found' });
-    } else {
-        res.json(product);
-    }
+    res.json(product || { error: 'Product with this ID was not found' });
 });
 
-// Get a specific product by barcode
-app.get('/api/products/upc/:upc', (req, res) => {
-    const upcId = parseInt(req.params.upc);
-    const product = products.find(p => p.upc === upcId);
-    if (!product) {
-        res.status(404).json({ error: 'Product not found' });
-    } else {
-        res.json(product);
-    }
-});
+// // Get a specific product by barcode
+// app.get('/api/products/upc/:upc', (req, res) => {
+//     const requestedUpc = req.params.upc;
 
-
-// Get all products added after a specific date.
-app.get('/api/products/bydate/:date', (req, res) => {
-    const date = Date.parse(req.params.date);
-    if (!isNaN(date)) {
-        // Successfully parsed, 'date' contains the milliseconds since Jan 1, 1970
-        console.log('date:', date);
-    } else {
-        console.log('Invalid date string');
-    }
-
-    const filteredProducts = products.filter(p => p.dateAdded >= date);
-    if (filteredProducts.length === 0) {
-        res.status(404).json({ error: 'Product not found' });
-    } else {
-        res.json(filteredProducts);
-    }
-});
-
-// Get a specific product by manufacturer
-app.get('/api/products/producttype/:producttype', (req, res) => {
-    const productType = parseInt(req.params.producttype);
-    const prodTypes = products.find(p => p.producttype === productType);
-    if (!prodTypes) {
-        res.status(404).json({ error: 'Products not found' });
-    } else {
-        res.json(prodTypes);
-    }
-});
+//     const productsMatchingUpc = products.find(p => p.upc === requestedUpc);
+//     if (!productsMatchingUpc) {
+//         res.status(404).json({ error: 'Products with this UPC were not found' });
+//     } else {
+//         res.json(productsMatchingUpc);
+//     }
+// });
 
 app.listen(port, () => {
     console.log(`API listening on port ${port}`);
