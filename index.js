@@ -8,10 +8,10 @@ const products = [
         id: 1,
         upc: '846336000242', 
         sku: 'T920EZ', 
-        producttype: 'Grain', 
-        feedtype:'textured', 
+        productType: 'Grain', 
+        feedType:'textured', 
         manufacturer: 'Tribute', 
-        productname: 'Kalm N Ez', 
+        productName: 'Kalm N Ez', 
         price: 22.99, 
         weight:50,
         description:'A low sugar and starch (NSC), pelleted feed with a small inclusion of whole oats.',
@@ -22,10 +22,10 @@ const products = [
         id: 2, 
         upc: '846336000211', 
         sku: '920P', 
-        producttype: 'Grain',
-        feedtype:'pelleted', 
+        productType: 'Grain',
+        feedType:'pelleted', 
         manufacturer: 'Tribute', 
-        productname: 'Kalm N Ez', 
+        productName: 'Kalm N Ez', 
         price: 22.99, 
         weight:50,
         description: 'A low sugar and starch (NSC), pelleted horse feed for all classes of adult horses.',
@@ -36,10 +36,10 @@ const products = [
         id: 3, 
         upc: '846336004813', 
         sku: '928EK30', 
-        producttype: 'Grain',
-        feedtype:'pelleted', 
+        productType: 'Grain',
+        feedType:'pelleted', 
         manufacturer: 'Tribute', 
-        productname: 'Essential K', 
+        productName: 'Essential K', 
         price: 24.99, 
         weight:50,
         description: 'A low NSC ration balancer for idle, breeding, growing and performance horses.',
@@ -51,10 +51,10 @@ const products = [
         id: 4,
        upc: '736816326439 ',
         sku: '',
-        producttype: 'Grain',
-        feedtype: 'Pelleted',
+        productType: 'Grain',
+        feedType: 'Pelleted',
         manufacturer: "Producer's Pride",
-        productname: '12% Sweet Horse Feed',
+        productName: '12% Sweet Horse Feed',
         price: 14.49,
         weight: 50,
         description: 'A sweet horse feed suitable for various life stages.',
@@ -65,9 +65,9 @@ const products = [
 ];
 
 // Get a specific product by Product Type
-app.get('/api/products/producttype/:producttype', (req, res) => {
-    const requestedProductType = req.params.producttype;
-    const filteredProducts = products.filter(p => p.producttype === requestedProductType);
+app.get('/api/products/productType/:productType', (req, res) => {
+    const requestedproductType = req.params.productType;
+    const filteredProducts = products.filter(p => p.productType === requestedproductType);
     res.json(filteredProducts.length ? filteredProducts : { error: 'Product type not found' });
 });
 
