@@ -9,28 +9,32 @@ const products = [
         upc: '846336000242', 
         sku: 'T920EZ', 
         productType: 'Grain', 
-        feedType:'textured', 
-        manufacturer: 'Tribute', 
+        feedType:'Textured',
+        brand: 'Tribute',
+        manufacturer: 'Kalmbach Feeds, Inc', 
         productName: 'Kalm N Ez', 
         price: 22.99, 
         weight:50,
         description:'A low sugar and starch (NSC), pelleted feed with a small inclusion of whole oats.',
         url: 'https://tributeequinenutrition.com/products/kalm-n-ez-textured',
-        dateAdded: '1776-07-04'
+        dateAdded: '1776-07-04',
+        isImported: 'true'
     },
     { 
         id: 2, 
         upc: '846336000211', 
         sku: '920P', 
         productType: 'Grain',
-        feedType:'Pelleted', 
-        manufacturer: 'Tribute', 
+        feedType:'Pelleted',
+        brand: 'Tribute',
+        manufacturer: 'Kalmbach Feeds, Inc', 
         productName: 'Kalm N Ez', 
         price: 22.99, 
         weight:50,
         description: 'A low sugar and starch (NSC), pelleted horse feed for all classes of adult horses.',
         url: 'https://tributeequinenutrition.com/products/kalm-n-ez-pellet',
-        dateAdded: '1776-07-04'
+        dateAdded: '1776-07-04',
+        isImported: 'true'
     },
     { 
         id: 3, 
@@ -38,13 +42,15 @@ const products = [
         sku: '928EK30', 
         productType: 'Grain',
         feedType:'Pelleted', 
-        manufacturer: 'Tribute', 
+        brand: 'Tribute',
+        manufacturer: 'Kalmbach Feeds, Inc', 
         productName: 'Essential K', 
         price: 24.99, 
         weight:50,
         description: 'A low NSC ration balancer for idle, breeding, growing and performance horses.',
-        url: 'https://tributeequinenutrition.com/products/essential-k',
-        dateAdded: '1776-07-04'
+        url: "https://tributeequinenutrition.com/products/essential-k",
+        dateAdded: '1776-07-04',
+        isImported: 'true'
     },
    
     {
@@ -53,13 +59,15 @@ const products = [
         sku: '',
         productType: 'Grain',
         feedType: 'Pelleted',
+        brand: "Producer's Pride",
         manufacturer: "Producer's Pride",
         productName: '12% Sweet Horse Feed',
         price: 14.49,
         weight: 50,
         description: 'A sweet horse feed suitable for various life stages.',
         url: 'https://www.tractorsupply.com/tsc/product/producers-pride-12-sweet-feed-50-lb',
-        dateAdded: '1776-07-04'
+        dateAdded: '1776-07-04',
+        isImported: 'true'
     }
      // Add more products
 ];
