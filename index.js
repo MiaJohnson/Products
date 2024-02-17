@@ -17,8 +17,7 @@ const products = [
         weight:50,
         description:'A low sugar and starch (NSC), pelleted feed with a small inclusion of whole oats.',
         url: 'https://tributeequinenutrition.com/products/kalm-n-ez-textured',
-        dateAdded: '1776-07-04',
-        isImported: 'true'
+        dateAdded: '1776-07-04'
     },
     { 
         id: 2, 
@@ -33,8 +32,7 @@ const products = [
         weight:50,
         description: 'A low sugar and starch (NSC), pelleted horse feed for all classes of adult horses.',
         url: 'https://tributeequinenutrition.com/products/kalm-n-ez-pellet',
-        dateAdded: '1776-07-04',
-        isImported: 'true'
+        dateAdded: '1776-07-04'
     },
     { 
         id: 3, 
@@ -49,8 +47,7 @@ const products = [
         weight:50,
         description: 'A low NSC ration balancer for idle, breeding, growing and performance horses.',
         url: "https://tributeequinenutrition.com/products/essential-k",
-        dateAdded: '1776-07-04',
-        isImported: 'true'
+        dateAdded: '1776-07-04'
     },
    
     {
@@ -66,8 +63,7 @@ const products = [
         weight: 50,
         description: 'A sweet horse feed suitable for various life stages.',
         url: 'https://www.tractorsupply.com/tsc/product/producers-pride-12-sweet-feed-50-lb',
-        dateAdded: '1776-07-04',
-        isImported: 'true'
+        dateAdded: '1776-07-04'
     }
      // Add more products
 ];
