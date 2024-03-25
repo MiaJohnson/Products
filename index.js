@@ -3,12 +3,12 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Sample product data (in-memory array)
-const products = [
+const catalogs = [
     { 
         id: 1,
         upc: '846336000242', 
         sku: 'T920EZ', 
-        productType: 'Grain', 
+        catalogType: 'Grain', 
         feedType:'Textured',
         brand: 'Tribute',
         manufacturer: 'Kalmbach Feeds, Inc', 
@@ -24,7 +24,7 @@ const products = [
         id: 2, 
         upc: '846336000211', 
         sku: '920P', 
-        productType: 'Grain',
+        catalogType: 'Grain',
         feedType:'Pelleted',
         brand: 'Tribute',
         manufacturer: 'Kalmbach Feeds, Inc', 
@@ -40,7 +40,7 @@ const products = [
         id: 3, 
         upc: '846336004813', 
         sku: '928EK30', 
-        productType: 'Grain',
+        catalogType: 'Grain',
         feedType:'Pelleted', 
         brand: 'Tribute',
         manufacturer: 'Kalmbach Feeds, Inc', 
@@ -57,7 +57,7 @@ const products = [
         id: 4,
        upc: '736816326439 ',
         sku: '',
-        productType: 'Grain',
+        catalogType: 'Grain',
         feedType: 'Pelleted',
         brand: "Producer's Pride",
         manufacturer: "Producer's Pride",
@@ -73,46 +73,46 @@ const products = [
 ];
 
 // Get a specific product by Product Type
-app.get('/api/products/productType/:productType', (req, res) => {
-    const requestedproductType = req.params.productType;
-    const filteredProducts = products.filter(p => p.productType === requestedproductType);
-    res.json(filteredProducts.length ? filteredProducts : { error: 'Product type not found' });
+app.get('/api/catalogs/catalogType/:catalogType', (req, res) => {
+    const requestedCatalogType = req.params.catalogType;
+    const filteredCatalogs = catalogs.filter(p => p.catalogType === requestedCatalogType);
+    res.json(filteredCatalogs.length ? filteredCatalogs : { error: 'Catalog type not found' });
 });
 
-// Get products that were added on or after date passed in.
-app.get('/api/products/bydate/:date', (req, res) => {
+// Get catalogs that were added on or after date passed in.
+app.get('/api/catalogs/bydate/:date', (req, res) => {
     const date = new Date(req.params.date);
     if (isNaN(date)) {
         return res.status(400).json({ error: 'Invalid date format' });
     }
 
-    const filteredProducts = products.filter(p => new Date(p.dateAdded) >= date);
-    res.json(filteredProducts.length ? filteredProducts : { error: 'Products after date not found' });
+    const filteredcatalogs = catalogs.filter(p => new Date(p.dateAdded) >= date);
+    res.json(filteredcatalogs.length ? filteredcatalogs : { error: 'catalogs after date not found' });
 });
 
 
 
-// Get all products
-app.get('/api/products', (req, res) => {
-    res.json(products);
+// Get all catalogs
+app.get('/api/catalogs', (req, res) => {
+    res.json(catalogs);
 });
 
-// Get a specific product by ID
-app.get('/api/products/:id', (req, res) => {
-    const productId = parseInt(req.params.id);
-    const product = products.find(p => p.id === productId);
-    res.json(product || { error: 'Product with this ID was not found' });
+// Get a specific catalog by ID
+app.get('/api/catalogs/:id', (req, res) => {
+    const catalogId = parseInt(req.params.id);
+    const catalog = catalogs.find(p => p.id === catalogId);
+    res.json(catalog || { error: 'Catalog with this ID was not found' });
 });
 
-// // Get a specific product by barcode
-// app.get('/api/products/upc/:upc', (req, res) => {
+// // Get a specific catalog by barcode
+// app.get('/api/catalogs/upc/:upc', (req, res) => {
 //     const requestedUpc = req.params.upc;
 
-//     const productsMatchingUpc = products.find(p => p.upc === requestedUpc);
-//     if (!productsMatchingUpc) {
-//         res.status(404).json({ error: 'Products with this UPC were not found' });
+//     const catalogsMatchingUpc = catalogs.find(p => p.upc === requestedUpc);
+//     if (!catalogsMatchingUpc) {
+//         res.status(404).json({ error: 'catalogs with this UPC were not found' });
 //     } else {
-//         res.json(productsMatchingUpc);
+//         res.json(catalogsMatchingUpc);
 //     }
 // });
 
