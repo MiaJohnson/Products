@@ -8,7 +8,7 @@ const catalogs = [
         id: 1,
         upc: '846336000242', 
         sku: 'T920EZ', 
-        catalogType: 'Grain', 
+        category: 'Concentrates', 
         feedType:'Textured',
         brand: 'Tribute',
         manufacturer: 'Kalmbach Feeds, Inc', 
@@ -24,7 +24,7 @@ const catalogs = [
         id: 2, 
         upc: '846336000211', 
         sku: '920P', 
-        catalogType: 'Grain',
+        category: 'Concentrates',
         feedType:'Pelleted',
         brand: 'Tribute',
         manufacturer: 'Kalmbach Feeds, Inc', 
@@ -40,7 +40,7 @@ const catalogs = [
         id: 3, 
         upc: '846336004813', 
         sku: '928EK30', 
-        catalogType: 'Grain',
+        category: 'Concentrates',
         feedType:'Pelleted', 
         brand: 'Tribute',
         manufacturer: 'Kalmbach Feeds, Inc', 
@@ -57,7 +57,7 @@ const catalogs = [
         id: 4,
        upc: '736816326439',
         sku: '',
-        catalogType: 'Grain',
+        category: 'Concentrates',
         feedType: 'Pelleted',
         brand: "Producer's Pride",
         manufacturer: "Producer's Pride",
@@ -73,10 +73,10 @@ const catalogs = [
 ];
 
 // Get a specific product by Product Type
-app.get('/api/catalogs/catalogType/:catalogType', (req, res) => {
-    const requestedCatalogType = req.params.catalogType;
-    const filteredCatalogs = catalogs.filter(p => p.catalogType === requestedCatalogType);
-    res.json(filteredCatalogs.length ? filteredCatalogs : { error: 'Catalog type not found' });
+app.get('/api/catalogs/category/:category', (req, res) => {
+    const requestedCategory = req.params.category;
+    const filteredCatalogs = catalogs.filter(p => p.category === requestedCategory);
+    res.json(filteredCatalogs.length ? filteredCatalogs : { error: 'No records with this catagory were found' });
 });
 
 // Get catalogs that were added on or after date passed in.
