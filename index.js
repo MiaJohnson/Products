@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 // Sample product data (in-memory array)
 const catalogs = [
     { 
-        SystemId: 1,
+        systemId: 1,
         upc: '846336000242', 
         sku: 'T920EZ', 
         category: 'Concentrates', 
@@ -21,7 +21,7 @@ const catalogs = [
         isImported: 'true'
     },
     { 
-        SystemId: 2, 
+        systemId: 2, 
         upc: '846336000211', 
         sku: '920P', 
         category: 'Concentrates',
@@ -37,7 +37,7 @@ const catalogs = [
         isImported: 'true'
     },
     { 
-        SystemId: 3, 
+        systemId: 3, 
         upc: '846336004813', 
         sku: '928EK30', 
         category: 'Concentrates',
@@ -54,7 +54,7 @@ const catalogs = [
     },
    
     {
-        SystemId: 4,
+        systemId: 4,
        upc: '736816326439 ',
         sku: '',
         category: 'Concentrates',
@@ -97,10 +97,10 @@ app.get('/api/catalogs', (req, res) => {
     res.json(catalogs);
 });
 
-// Get a specific catalog by SystemId
-app.get('/api/catalogs/:SystemId', (req, res) => {
-    const apiId = parseInt(req.params.SystemId);
-    const catalog = catalogs.find(p => p.SystemId === apiId);
+// Get a specific catalog by systemId
+app.get('/api/catalogs/:systemId', (req, res) => {
+    const apiId = parseInt(req.params.systemId);
+    const catalog = catalogs.find(p => p.systemId === apiId);
     res.json(catalog || { error: 'Catalog with this ID was not found' });
 });
 
