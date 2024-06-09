@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 // Sample product data (in-memory array)
 const catalogs = [
     { 
-        id: 1,
+        SystemId: 1,
         upc: '846336000242', 
         sku: 'T920EZ', 
         category: 'Concentrates', 
@@ -21,7 +21,7 @@ const catalogs = [
         isImported: 'true'
     },
     { 
-        id: 2, 
+        SystemId: 2, 
         upc: '846336000211', 
         sku: '920P', 
         category: 'Concentrates',
@@ -37,7 +37,7 @@ const catalogs = [
         isImported: 'true'
     },
     { 
-        id: 3, 
+        SystemId: 3, 
         upc: '846336004813', 
         sku: '928EK30', 
         category: 'Concentrates',
@@ -54,8 +54,8 @@ const catalogs = [
     },
    
     {
-        id: 4,
-       upc: '736816326439',
+        SystemId: 4,
+       upc: '736816326439 ',
         sku: '',
         category: 'Concentrates',
         feedType: 'Pelleted',
@@ -97,10 +97,10 @@ app.get('/api/catalogs', (req, res) => {
     res.json(catalogs);
 });
 
-// Get a specific catalog by ID
-app.get('/api/catalogs/:id', (req, res) => {
-    const catalogId = parseInt(req.params.id);
-    const catalog = catalogs.find(p => p.id === catalogId);
+// Get a specific catalog by SystemId
+app.get('/api/catalogs/:SystemId', (req, res) => {
+    const apiId = parseInt(req.params.SystemId);
+    const catalog = catalogs.find(p => p.SystemId === apiId);
     res.json(catalog || { error: 'Catalog with this ID was not found' });
 });
 
@@ -117,5 +117,5 @@ app.get('/api/catalogs/:id', (req, res) => {
 // });
 
 app.listen(port, () => {
-    console.log(`API listening on port ${port}`);
+    console.log(`API is now listening`);
 });
